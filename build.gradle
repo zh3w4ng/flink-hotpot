@@ -18,9 +18,6 @@ jsonSchema2Pojo {
     targetPackage = 'com.highspot.prismo.hotpot.schema'
 }
 
-generateAvroProtocol {
-    source("${sourceSets.main.output.resourcesDir}/avro")
-}
 generateAvroJava {
     source("${sourceSets.main.output.resourcesDir}/avro")
 }

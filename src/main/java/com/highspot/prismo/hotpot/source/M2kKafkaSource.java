@@ -4,14 +4,15 @@ import java.io.InputStream;
 import java.io.IOException;
 import java.util.*;
 import org.apache.flink.connector.kafka.source.KafkaSource;
+import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
 import org.apache.flink.formats.json.JsonDeserializationSchema;
 import com.highspot.prismo.hotpot.schema.M2kEvent;
 
 public class M2kKafkaSource {
-    public static KafkaSource<M2kEvent> createLocal(String topic, String consumerGroup) {
-        return KafkaSource.<M2kEvent>builder()
-            .setBootstrapServers("localhost:29092")
+    public static KafkaSource<String> createRemote(String topic, String consumerGroup) {
+        return KafkaSource.<String>builder()
+            .setBootstrapServers("b-1.latest0-su0-kafka3.ubriia.c8.kafka.us-east-1.amazonaws.com:9096")
             .setTopics(Arrays.asList(topic))
             .setGroupId(consumerGroup)
             .setProperties(properties())
@@ -19,9 +20,10 @@ public class M2kKafkaSource {
             .build();
     }
 
-    private static KafkaRecordDeserializationSchema<M2kEvent> kafkaRecordDeserializationSchema() {
+    private static KafkaRecordDeserializationSchema<String> kafkaRecordDeserializationSchema() {
         return KafkaRecordDeserializationSchema
-            .valueOnly(new JsonDeserializationSchema<M2kEvent>(M2kEvent.class));
+            .valueOnly(StringDeserializer.class);
+            // .valueOnly(new JsonDeserializationSchema<M2kEvent>(M2kEvent.class));
     }
 
     private static Properties properties() {
