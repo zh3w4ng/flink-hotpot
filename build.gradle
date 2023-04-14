@@ -19,10 +19,10 @@ jsonSchema2Pojo {
 }
 
 generateAvroProtocol {
-    source("src/resources/avro")
+    source("${sourceSets.main.output.resourcesDir}/avro")
 }
 generateAvroJava {
-    source("src/resources/avro")
+    source("${sourceSets.main.output.resourcesDir}/avro")
 }
 
 repositories {
