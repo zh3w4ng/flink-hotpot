@@ -1,0 +1,101 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'com.google.cloud.tools.jib' version '3.3.0'
+    id 'com.github.davidmc24.gradle.plugin.avro' version '1.6.0'
+    id 'org.jsonschema2pojo' version '1.2.1'
+    id 'de.undercouch.download' version '5.3.0'
+}
+
+mainClassName = 'com.highspot.prismo.hotpot.job.ProjectorJob'
+
+jsonSchema2Pojo {
+    source = files("${sourceSets.main.output.resourcesDir}/json")
+    useOptionalForGetters = true
+    includeConstructors = true
+    includeAllPropertiesConstructor = true
+    serializable = true
+    targetPackage = 'com.highspot.prismo.hotpot.schema'
+}
+
+generateAvroProtocol {
+    source("src/resources/avro")
+}
+generateAvroJava {
+    source("src/resources/avro")
+}
+
+repositories {
+    gradlePluginPortal()
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.apache.flink:flink-java:${flinkVersion}"
+    implementation "org.apache.flink:flink-streaming-java:${flinkVersion}"
+    implementation "org.apache.flink:flink-json:${flinkVersion}"
+    implementation "org.apache.flink:flink-connector-kafka:${flinkVersion}"
+    implementation "org.apache.flink:flink-clients:${flinkVersion}"
+    compileOnly "org.apache.flink:flink-s3-fs-presto:${flinkVersion}"
+
+
+    implementation ('org.apache.flink:flink-avro-glue-schema-registry_2.12:1.16.1') {
+        exclude group: 'software.amazon.awssdk', module: 'apache-client'
+    }
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+}
+
+
+task downloadFile(type: Download) {
+    src "https://repo.maven.apache.org/maven2/org/apache/flink/flink-s3-fs-presto/${flinkVersion}/flink-s3-fs-presto-${flinkVersion}.jar"
+    dest buildDir
+    overwrite true
+}
+
+jib {
+    def environment = project.hasProperty('env') ? env : 'dev'
+    def imageRepo = environment.equals('dev') ? devImageRepo : prodImageRepo
+    from {
+        image = "flink:${flinkVersion}"
+        platforms {
+            platform {
+                architecture = 'amd64'
+                os = 'linux'
+            }
+            platform {
+                architecture = 'arm64'
+                os = 'linux'
+            }
+        }
+    }
+    to {
+        image = "${imageRepo}:${version}"
+        if (environment != 'dev') {
+            auth {
+                username = 'AWS'
+                password = "$System.env.ECR_PASSWORD"
+            }
+        }
+    }
+    allowInsecureRegistries = true
+    container {
+        entrypoint = "INHERIT"
+        appRoot = "/opt/flink/usrlib/app"
+    }
+    extraDirectories {
+        paths {
+            path {
+                from = project.provider { buildDir }
+                into = project.provider { '/opt/flink/plugins/s3-fs-presto' }
+                includes = project.provider { ["flink-s3-fs-presto-${flinkVersion}.jar"] }
+            }
+        }
+    }
+    containerizingMode = "packaged"
+}
+
+test {
+    useJUnitPlatform()
+}

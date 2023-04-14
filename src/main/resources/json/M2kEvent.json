@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "#M2kEvent.json",
+  "type": "object",
+  "properties": {
+    "id": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "int"
+        }
+      ],
+      "required": false
+    },
+    "content": {
+      "oneOf": [
+        {
+          "type": "int"
+        },
+        {
+          "type": "string"
+        }
+      ],
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,4 @@
+security.protocol=SASL_SSL
+sasl.mechanism=SCRAM-SHA-512
+request.timeout.ms=120000
+sasl.jaas.config=

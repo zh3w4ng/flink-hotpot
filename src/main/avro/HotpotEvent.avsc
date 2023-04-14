@@ -1,0 +1,15 @@
+{
+  "namespace": "com.highspot.prismo.hotpot.schema",
+  "type": "record",
+  "name": "HotpotEvent",
+  "fields": [
+    {
+      "name": "id",
+      "type": "int"
+    },
+    {
+      "name": "content",
+      "type": "string"
+    }
+  ]
+}

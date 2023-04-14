@@ -1,0 +1,13 @@
+repos:
+  - repo: https://github.com/dustinsand/pre-commit-jvm
+    rev: v0.6.0
+    hooks:
+      - id: google-java-formatter-jdk11
+        args: [--replace, --set-exit-if-changed]
+        types_or: [java]
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v2.7.1
+    hooks:
+      - id: prettier
+        # https://pre-commit.com/#filtering-files-with-types
+        types_or: [yaml, json, markdown]
