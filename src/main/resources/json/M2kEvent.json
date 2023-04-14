@@ -2,12 +2,20 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "#M2kEvent.json",
   "type": "object",
-  "required": ["_id"],
+  "required": ["_id", "created_at"],
   "properties": {
     "_id": { "type": "string" },
     // "owner_id": {"type": ["object", "null"]},
     // "status": {"type": ["object", "null"]},
-    // "created_at": {"type": ["object", "null"]},
+    "created_at": {
+      "type": "object",
+      "required": ["$date"],
+      "properties": {
+        "$date": "string",
+        "format": "date-time",
+        "customDateTimePattern": "yyyy-MM-dd'T'HH:mm:ssZ"
+      }
+    },
     // "updated_at": {"type": ["object", "null"]},
     // "index_state": {"type": ["object", "null"]},
     // "solr": {"type": ["object", "null"]},

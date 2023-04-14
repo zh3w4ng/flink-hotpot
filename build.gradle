@@ -14,6 +14,7 @@ jsonSchema2Pojo {
     useOptionalForGetters = true
     includeConstructors = true
     includeAllPropertiesConstructor = true
+    useJodaDates = true
     serializable = true
     targetPackage = 'com.highspot.prismo.hotpot.schema'
 }
