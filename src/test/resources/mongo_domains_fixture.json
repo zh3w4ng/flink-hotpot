@@ -1,0 +1,117 @@
+{
+  "_id": "hs60818.com",
+  "display_name": "Hs60818",
+  "owner_id": {
+    "$oid": "62a90f5a43634960f61ba789"
+  },
+  "status": {
+    "enabled": true
+  },
+  "created_at": {
+    "$date": "2023-02-21T19:34:49.296Z"
+  },
+  "updated_at": {
+    "$date": "2023-04-14T04:03:00.859Z"
+  },
+  "index_state": {
+    "version": 35,
+    "types": [
+      "Action",
+      "Alert",
+      "Group",
+      "Item",
+      "Pitch",
+      "Query",
+      "Spot",
+      "User"
+    ]
+  },
+  "solr": {
+    "query_cluster_name": "solr-latest-highspot-com-77",
+    "clusters": {
+      "solr-latest-highspot-com-77": {
+        "state": "active",
+        "index_state": {
+          "version": 35,
+          "types": [
+            "Action",
+            "Alert",
+            "Group",
+            "Item",
+            "Pitch",
+            "Query",
+            "Spot",
+            "User"
+          ]
+        }
+      }
+    }
+  },
+  "version": 170815,
+  "verified": true,
+  "company_subdomain": "hs60818",
+  "kind": "hs_employee",
+  "purpose": "sandbox",
+  "members": {
+    "63f51cd9f1729a8f868b2c43": "admin"
+  },
+  "slide_similarity_updated_at": {
+    "$date": "2023-04-14T03:29:17.510Z"
+  },
+  "clusters_indexed_at": {
+    "$date": "2023-04-14T03:29:13.690Z"
+  },
+  "hyok": {
+    "enabled": true,
+    "kms-key-id": "arn:aws:kms:us-east-1:674355965092:key/644c7ca4-06ca-4940-94ae-03bc1d0bb74f",
+    "recording_original": {
+      "hyok_encryption": true,
+      "last_audit_at": {
+        "$date": "2023-04-14T04:00:00Z"
+      }
+    },
+    "teams_temp_files": {
+      "hyok_encryption": true,
+      "last_audit_at": {
+        "$date": "2023-04-14T04:00:00Z"
+      }
+    },
+    "brand": {
+      "hyok_encryption": true,
+      "last_audit_at": {
+        "$date": "2023-04-14T04:00:00Z"
+      }
+    },
+    "items": {
+      "last_audit_at": {
+        "$date": "2023-02-21T20:20:24.125Z"
+      }
+    },
+    "media": {
+      "last_audit_at": {
+        "$date": "2023-04-14T04:00:00Z"
+      }
+    },
+    "recordings": {
+      "last_audit_at": {
+        "$date": "2023-04-14T04:00:00Z"
+      }
+    }
+  },
+  "similarity_updated_at": {
+    "$date": "2023-02-21T20:22:57.481Z"
+  },
+  "metrics_updated_at": {
+    "$date": "2023-01-13T08:21:05.263Z"
+  },
+  "affinity_updated_at": {
+    "$date": "2023-04-13T00:00:00Z"
+  },
+  "pitch_perf_updated_at": {
+    "$date": "2023-04-11T11:09:36.990Z"
+  },
+  "pitch_visibility_settings": {
+    "visibility_setting": "self",
+    "excluded_team_ids": []
+  }
+}

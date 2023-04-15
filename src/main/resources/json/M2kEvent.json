@@ -2,12 +2,31 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "#M2kEvent.json",
   "type": "object",
-  "required": ["_id", "created_at"],
+  "required": ["_id", "created_at", "updated_at"],
   "properties": {
     "_id": { "type": "string" },
     // "owner_id": {"type": ["object", "null"]},
     // "status": {"type": ["object", "null"]},
-    "created_at": {
+    "created_at": { "$ref": "#/$defs/timestamp" },
+    "updated_at": { "$ref": "#/$defs/timestamp" },
+    // "updated_at": {"type": ["object", "null"]},
+    // "index_state": {"type": ["object", "null"]},
+    // "solr": {"type": ["object", "null"]},
+    "version": { "type": "integer" },
+    "verified": { "type": "boolean" },
+    "company_subdomain": { "type": "string" },
+    "kind": { "type": "string" },
+    "purpose": { "type": "string" },
+    "clusters_indexed_at": { "$ref": "#/$defs/timestamp" },
+    // "hyok": {"type": ["object", "null"]},
+    // "similarity_updated_at": {"type": ["object", "null"]},
+    // "metrics_updated_at": {"type": ["object", "null"]},
+    // "affinity_updated_at": {"type": ["object", "null"]},
+    // "pitch_visibility_setting": {"type": ["object", "null"]},
+    "display_name": { "type": ["string", "null"] }
+  },
+  "$defs": {
+    "timestamp": {
       "type": "object",
       "required": ["$date"],
       "properties": {
@@ -15,21 +34,6 @@
         "format": "date-time",
         "customDateTimePattern": "yyyy-MM-dd'T'HH:mm:ssZ"
       }
-    },
-    // "updated_at": {"type": ["object", "null"]},
-    // "index_state": {"type": ["object", "null"]},
-    // "solr": {"type": ["object", "null"]},
-    "version": { "type": "integer" },
-    "verified": { "type": "boolean" },
-    // "company_subdomain": {"type": "string"},
-    // "kind": {"type": "string"},
-    // "purpose": {"type": "string"},
-    // "clusters_indexed_at": {"type": ["object", "null"]},
-    // "hyok": {"type": ["object", "null"]},
-    // "similarity_updated_at": {"type": ["object", "null"]},
-    // "metrics_updated_at": {"type": ["object", "null"]},
-    // "affinity_updated_at": {"type": ["object", "null"]},
-    // "pitch_visibility_setting": {"type": ["object", "null"]},
-    "display_name": { "type": ["string", "null"] }
+    }
   }
 }
