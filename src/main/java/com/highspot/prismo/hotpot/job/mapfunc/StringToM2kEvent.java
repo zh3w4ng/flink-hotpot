@@ -17,10 +17,9 @@ public class StringToM2kEvent implements MapFunction<String, M2kEvent> {
     }
 
     private M2kEvent defaultM2kEvent() {
-        M2kEvent e = new M2kEvent();
-        e.setId("");
-        e.setCreatedAt(new Timestamp("1970-01-01T00:00:00.000Z", "", ""));
-        e.setUpdatedAt(new Timestamp("1970-01-01T00:00:00.000Z", "", ""));
-        return e;
+        return new M2kEvent()
+                .withId("")
+                .withCreatedAt(new Timestamp().with$date("1970-01-01T00:00:00.000Z"))
+                .withUpdatedAt(new Timestamp().with$date("1970-01-01T00:00:00.000Z"));
     }
 }
