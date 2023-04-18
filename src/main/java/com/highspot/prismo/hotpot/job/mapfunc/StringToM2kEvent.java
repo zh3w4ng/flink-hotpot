@@ -8,11 +8,13 @@ import com.highspot.prismo.hotpot.schema.M2kEvent;
 import com.highspot.prismo.hotpot.schema.Timestamp;
 
 public class StringToM2kEvent implements MapFunction<String, M2kEvent> {
+    private ObjectMapper om = new ObjectMapper();
+
     @Override
     public M2kEvent map(String jsonString) throws JsonProcessingException {
         if (jsonString == null) return defaultM2kEvent();
-        JsonNode node = new ObjectMapper().readTree(jsonString);
-        M2kEvent event = new ObjectMapper().treeToValue(node, M2kEvent.class);
+        JsonNode node = om.readTree(jsonString);
+        M2kEvent event = om.treeToValue(node, M2kEvent.class);
         return event;
     }
 

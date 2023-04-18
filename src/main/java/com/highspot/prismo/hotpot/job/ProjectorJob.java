@@ -9,6 +9,7 @@ import com.highspot.prismo.hotpot.source.M2kKafkaSource;
 import com.highspot.prismo.hotpot.sink.HotpotKafkaSink;
 import com.highspot.prismo.hotpot.schema.M2kEvent;
 import com.highspot.prismo.hotpot.schema.HotpotEvent;
+import com.highspot.prismo.hotpot.job.filterfunc.FilterByDomain;
 import com.highspot.prismo.hotpot.job.mapfunc.M2kEventToHotpotEvent;
 import com.highspot.prismo.hotpot.job.mapfunc.StringToM2kEvent;
 
@@ -27,8 +28,11 @@ public class ProjectorJob {
             .name("prismo_hotpot").uid("prismo_hotpot");
 
         KafkaSink<HotpotEvent> hotpotEventSink = HotpotKafkaSink.createLocal(outputTopic);
-        // m2kEventStream.map(new StringToM2kEvent()).map(new M2kEventToHotpotEvent()).print();
-        m2kEventStream.map(new StringToM2kEvent()).map(new M2kEventToHotpotEvent()).sinkTo(hotpotEventSink);
+        m2kEventStream
+            .map(new StringToM2kEvent())
+            .filter(new FilterByDomain())
+            .map(new M2kEventToHotpotEvent())
+            .sinkTo(hotpotEventSink);
 
         environment.execute();
     }
