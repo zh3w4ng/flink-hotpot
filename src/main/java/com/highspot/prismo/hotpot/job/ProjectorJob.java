@@ -26,8 +26,9 @@ public class ProjectorJob {
                        "prismo_hotpot")
             .name("prismo_hotpot").uid("prismo_hotpot");
 
-        // KafkaSink<HotpotEvent> hotpotEventSink = HotpotKafkaSink.createLocal(outputTopic);
-        m2kEventStream.map(new StringToM2kEvent()).print();
+        KafkaSink<HotpotEvent> hotpotEventSink = HotpotKafkaSink.createLocal(outputTopic);
+        // m2kEventStream.map(new StringToM2kEvent()).map(new M2kEventToHotpotEvent()).print();
+        m2kEventStream.map(new StringToM2kEvent()).map(new M2kEventToHotpotEvent()).sinkTo(hotpotEventSink);
 
         environment.execute();
     }

@@ -4,23 +4,23 @@ import org.apache.flink.api.common.functions.MapFunction;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.joda.time.DateTime;
 import com.highspot.prismo.hotpot.schema.M2kEvent;
+import com.highspot.prismo.hotpot.schema.Timestamp;
 
 public class StringToM2kEvent implements MapFunction<String, M2kEvent> {
     @Override
     public M2kEvent map(String jsonString) throws JsonProcessingException {
-        System.out.println(jsonString);
-        System.out.println("*********");
-        M2kEvent e = new M2kEvent();
-        e.setId("");
-        if (jsonString == null) return e;
+        if (jsonString == null) return defaultM2kEvent();
         JsonNode node = new ObjectMapper().readTree(jsonString);
         M2kEvent event = new ObjectMapper().treeToValue(node, M2kEvent.class);
-        System.out.println(event.getId());
-        DateTime dt = new DateTime(event.getUpdatedAt().get$date());
-        System.out.println(dt.getDayOfMonth());
-        System.out.println("#########");
         return event;
+    }
+
+    private M2kEvent defaultM2kEvent() {
+        M2kEvent e = new M2kEvent();
+        e.setId("");
+        e.setCreatedAt(new Timestamp("1970-01-01T00:00:00.000Z", "", ""));
+        e.setUpdatedAt(new Timestamp("1970-01-01T00:00:00.000Z", "", ""));
+        return e;
     }
 }

@@ -5,11 +5,17 @@
   "fields": [
     {
       "name": "id",
-      "type": "int"
+      "type": "string"
     },
     {
-      "name": "content",
-      "type": "string"
+      "name": "created_at",
+      "type": "long",
+      "logicalType": "timestamp-millis"
+    },
+    {
+      "name": "updated_at",
+      "type": "long",
+      "logicalType": "timestamp-millis"
     }
   ]
 }

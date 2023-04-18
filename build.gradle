@@ -19,6 +19,9 @@ jsonSchema2Pojo {
     targetPackage = 'com.highspot.prismo.hotpot.schema'
 }
 
+generateAvroProtocol {
+    source("${sourceSets.main.output.resourcesDir}/avro")
+}
 generateAvroJava {
     source("${sourceSets.main.output.resourcesDir}/avro")
 }
@@ -38,6 +41,12 @@ dependencies {
 
 
     implementation ('org.apache.flink:flink-avro-glue-schema-registry_2.12:1.16.1') {
+        exclude group: 'software.amazon.awssdk', module: 'apache-client'
+    }
+    implementation ('software.amazon.awssdk:sso:2.20.22') {
+        exclude group: 'software.amazon.awssdk', module: 'apache-client'
+    }
+    implementation ('software.amazon.awssdk:ssooidc:2.20.22') {
         exclude group: 'software.amazon.awssdk', module: 'apache-client'
     }
 
