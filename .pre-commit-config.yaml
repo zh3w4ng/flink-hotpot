@@ -11,3 +11,21 @@ repos:
       - id: prettier
         # https://pre-commit.com/#filtering-files-with-types
         types_or: [yaml, json, markdown]
+  - repo: https://github.com/dustinsand/pre-commit-jvm
+    rev: v0.8.0
+    hooks:
+      - id: pmd
+        types_or: [java]
+        args:
+          [
+            -rulesets,
+            pmd-ruleset.xml,
+            -language,
+            java,
+            -cache,
+            .pmd/cache,
+            -dir,
+            src/main/java,
+            -f,
+            textcolor,
+          ]
