@@ -4,6 +4,10 @@
 
 
 ## How to run
+
+### Flow Chart
+![Projector Flink Job](https://user-images.githubusercontent.com/110857308/233148674-45ba9023-6490-4106-8eee-c1354e7cf5dd.png)
+
 ### Unit Testing
 - `gradle test`
 
