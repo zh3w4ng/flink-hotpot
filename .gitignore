@@ -1,4 +1,5 @@
 .DS_Store
+.pmd/
 .gradle/
 tmp/
 build/
