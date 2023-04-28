@@ -12,6 +12,7 @@
 ### Simulate with Latest M2k Event
 - get the credentials for M2k Kafka and derive a file named `M2kKafkaSource.properties` from `M2kKafkaSource.properties.template`.
 - connect to Latest VPN for m2k.
+- `aws sso login --profile latest` to enable AWS Glue Schema Registry feature for this flink job.
 - `gradle run`
 - `kafka-console-consumer --bootstrap-server localhost:29092 --topic prismo_hotpot_domains` and you will see the serialized avro events.
 - go to AWS Glue Schema Registry and you can find the up-to-date definition for schema `prismo_hotpot_domains`
