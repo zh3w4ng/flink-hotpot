@@ -1,9 +1,9 @@
-package com.highspot.prismo.hotpot.job.filterfunc;
+package io.diablogato.flink.hotpot.job.filterfunc;
 
 import java.util.List;
 import java.util.Arrays;
 import org.apache.flink.api.common.functions.FilterFunction;
-import com.highspot.prismo.hotpot.schema.M2kEvent;
+import io.diablogato.flink.hotpot.schema.M2kEvent;
 
 public class FilterByDomain implements FilterFunction<M2kEvent> {
     @Override

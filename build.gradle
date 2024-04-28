@@ -8,7 +8,7 @@ plugins {
     id 'de.undercouch.download' version '5.3.0'
 }
 
-mainClassName = 'com.highspot.prismo.hotpot.job.ProjectorJob'
+mainClassName = 'io.diablogato..flink.hotpot.job.ProjectorJob'
 
 test {
     finalizedBy jacocoTestReport // report is always generated after tests run
@@ -25,7 +25,7 @@ jsonSchema2Pojo {
     generateBuilders = true
     useJodaDates = true
     serializable = true
-    targetPackage = 'com.highspot.prismo.hotpot.schema'
+    targetPackage = 'io.diablogato.flink.hotpot.schema'
 }
 
 generateAvroJava {

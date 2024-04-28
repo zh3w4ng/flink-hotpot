@@ -1,4 +1,4 @@
-package com.highspot.prismo.hotpot.test.util;
+package io.diablogato.flink.hotpot.test.util;
 
 import java.io.IOException;
 import java.nio.file.Files;

@@ -1,4 +1,4 @@
-package com.highspot.prismo.hotpot.source;
+package io.diablogato.flink.hotpot.source;
 
 import java.io.InputStream;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import org.apache.flink.connector.kafka.source.KafkaSource;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.apache.flink.connector.kafka.source.reader.deserializer.KafkaRecordDeserializationSchema;
 import org.apache.flink.formats.json.JsonDeserializationSchema;
-import com.highspot.prismo.hotpot.schema.M2kEvent;
+import io.diablogato.flink.hotpot.schema.M2kEvent;
 
 public class M2kKafkaSource {
     public static KafkaSource<String> createRemote(String topic, String consumerGroup) {

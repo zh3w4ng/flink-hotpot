@@ -1,5 +1,5 @@
 {
-  "namespace": "com.highspot.prismo.hotpot.schema",
+  "namespace": "io.diablogato.flink.hotpot.schema",
   "type": "record",
   "name": "HotpotEvent",
   "fields": [

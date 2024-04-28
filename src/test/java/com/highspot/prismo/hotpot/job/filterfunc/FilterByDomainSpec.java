@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import com.highspot.prismo.hotpot.schema.M2kEvent;
-import com.highspot.prismo.hotpot.job.filterfunc.FilterByDomain;
+import io.diablogato.flink.hotpot.schema.M2kEvent;
+import io.diablogato.flink.hotpot.job.filterfunc.FilterByDomain;
 
 public class FilterByDomainSpec {
     @Test

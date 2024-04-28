@@ -2,10 +2,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.joda.time.DateTime;
-import com.highspot.prismo.hotpot.schema.Timestamp;
-import com.highspot.prismo.hotpot.schema.M2kEvent;
-import com.highspot.prismo.hotpot.schema.HotpotEvent;
-import com.highspot.prismo.hotpot.job.mapfunc.M2kEventToHotpotEvent;
+import io.diablogato.flink.hotpot.schema.Timestamp;
+import io.diablogato.flink.hotpot.schema.M2kEvent;
+import io.diablogato.flink.hotpot.schema.HotpotEvent;
+import io.diablogato.flink.hotpot.job.mapfunc.M2kEventToHotpotEvent;
 
 public class M2kEventToHotpotEventSpec {
     @Test

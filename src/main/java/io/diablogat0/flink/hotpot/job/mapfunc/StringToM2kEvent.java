@@ -1,11 +1,11 @@
-package com.highspot.prismo.hotpot.job.mapfunc;
+package io.diablogato.flink.hotpot.job.mapfunc;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.highspot.prismo.hotpot.schema.M2kEvent;
-import com.highspot.prismo.hotpot.schema.Timestamp;
+import io.diablogato.flink.hotpot.schema.M2kEvent;
+import io.diablogato.flink.hotpot.schema.Timestamp;
 
 public class StringToM2kEvent implements MapFunction<String, M2kEvent> {
     private ObjectMapper om = new ObjectMapper();

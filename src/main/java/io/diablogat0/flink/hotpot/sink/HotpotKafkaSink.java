@@ -1,4 +1,4 @@
-package com.highspot.prismo.hotpot.sink;
+package io.diablogato.flink.hotpot.sink;
 
 import com.amazonaws.services.schemaregistry.utils.AWSSchemaRegistryConstants;
 import com.amazonaws.services.schemaregistry.utils.AvroRecordType;
@@ -8,7 +8,7 @@ import org.apache.flink.connector.kafka.sink.KafkaSink;
 import org.apache.flink.connector.kafka.sink.KafkaRecordSerializationSchema;
 import org.apache.flink.connector.aws.config.AWSConfigConstants;
 import org.apache.flink.formats.avro.glue.schema.registry.GlueSchemaRegistryAvroSerializationSchema;
-import com.highspot.prismo.hotpot.schema.HotpotEvent;
+import io.diablogato.flink.hotpot.schema.HotpotEvent;
 
 public class HotpotKafkaSink {
     public static KafkaSink<HotpotEvent> createLocal(String topic) {

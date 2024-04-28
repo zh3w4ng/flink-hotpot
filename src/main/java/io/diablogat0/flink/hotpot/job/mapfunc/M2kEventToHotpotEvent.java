@@ -1,9 +1,9 @@
-package com.highspot.prismo.hotpot.job.mapfunc;
+package io.diablogato.flink.hotpot.job.mapfunc;
 
 import org.apache.flink.api.common.functions.MapFunction;
 import org.joda.time.DateTime;
-import com.highspot.prismo.hotpot.schema.M2kEvent;
-import com.highspot.prismo.hotpot.schema.HotpotEvent;
+import io.diablogato.flink.hotpot.schema.M2kEvent;
+import io.diablogato.flink.hotpot.schema.HotpotEvent;
 
 public class M2kEventToHotpotEvent implements MapFunction<M2kEvent, HotpotEvent> {
     @Override
